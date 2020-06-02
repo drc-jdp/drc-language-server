@@ -15,6 +15,20 @@
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"type": "shell",
+			"command": "${execPath}",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}",
+			],
+			"options": {
+				"env": {
+					"VSCODE_DEBUG_MODE": "true"
+				}
+			},
+			"dependsOn": ["${defaultBuildTask}"],
+			"label": "Run Vscode",
 		}
 	]
 }

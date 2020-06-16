@@ -14,7 +14,7 @@ function getClientOptions(): LanguageClientOptions {
 	return {
 	 	 // Register the server for plain text documents
 		documentSelector: [
-			{ scheme: "file", language: "drc"},
+			{ scheme: "file", language: "plaintext"},
 		],
 		outputChannelName: "[pygls] DRC Language Server",
 		synchronize: {

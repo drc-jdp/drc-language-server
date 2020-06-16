@@ -14,21 +14,35 @@
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			}
+			},
+			"label": "watch"
 		},
 		{
 			"type": "shell",
 			"command": "${execPath}",
 			"args": [
-				"--extensionDevelopmentPath=${workspaceFolder}",
+				"--extensionDevelopmentPath=${workspaceFolder}"
 			],
 			"options": {
 				"env": {
 					"VSCODE_DEBUG_MODE": "true"
 				}
 			},
-			"dependsOn": ["${defaultBuildTask}"],
-			"label": "Run Vscode",
+			"label": "Launch Vscode"
+		},
+		{
+			"type": "shell",
+			"command": "echo",
+			"args": [
+				"done"
+			],
+			"dependsOn": [
+				"watch",
+				"Launch Vscode"
+			],
+			"dependsOrder": "parallel",
+			"label": "Start Pygls debug",
+			"problemMatcher": []
 		}
 	]
 }

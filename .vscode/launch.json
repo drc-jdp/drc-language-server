@@ -13,6 +13,9 @@
 			"args": [
 				"--extensionDevelopmentPath=${workspaceFolder}"
 			],
+			"env": {
+				"VSCODE_DEBUG_MODE": "true"
+			},
 			"outFiles": [
 				"${workspaceFolder}/out/**/*.js"
 			],
@@ -31,6 +34,13 @@
 				"${workspaceFolder}/out/test/**/*.js"
 			],
 			"preLaunchTask": "${defaultBuildTask}"
+		},
+		{
+			"name": "Run Python",
+			"type": "python",
+			"request": "launch",
+			"module": "server",
+			"args": ["--tcp"]
 		}
 	]
 }

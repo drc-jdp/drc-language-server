@@ -59,7 +59,7 @@ function isStartedInDebugMode(): boolean {
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
+	let root = context.extensionPath;
 	if (isStartedInDebugMode()) {
 		client = startLangServerTCP(2087);
 	} else {
@@ -70,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
 			throw new Error("`python.pythonPath` is not set");
 		}
 
-		client = startLangServer("drc-language-server", [], cwd);
+		client = startLangServer(`${root}/dist/drc-language-server`, [], cwd);
 	}
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated

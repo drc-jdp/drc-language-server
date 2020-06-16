@@ -1,4 +1,4 @@
-[![Pyhton Test](https://github.com/drc-jdp/drc-language-server/workflows/Python%20Test/badge.svg)](https://github.com/drc-jdp/drc-language-server/actions)
+<!-- [![Pyhton Test](https://github.com/drc-jdp/drc-language-server/workflows/Python%20Test/badge.svg)](https://github.com/drc-jdp/drc-language-server/actions) -->
 # drc-language-server README
 
 drc-language-server is a Visual Studio Code extension.

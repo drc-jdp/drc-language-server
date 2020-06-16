@@ -1,6 +1,7 @@
 {
 	"name": "drc-language-server",
 	"displayName": "drc-language-server",
+	"publisher": "BennoLin",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {

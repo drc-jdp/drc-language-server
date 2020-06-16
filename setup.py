@@ -3,6 +3,7 @@ from setuptools import setup
 
 requires = [
     "pygls",
+    "requests"
 ]
 
 extras = {}

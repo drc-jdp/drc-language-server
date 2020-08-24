@@ -28,7 +28,7 @@
 					"VSCODE_DEBUG_MODE": "true"
 				}
 			},
-			"label": "Launch Vscode"
+			"label": "Launch Vscode",
 		},
 		{
 			"type": "shell",

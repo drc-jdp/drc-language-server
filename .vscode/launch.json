@@ -17,9 +17,9 @@
 				"VSCODE_DEBUG_MODE": "true"
 			},
 			"outFiles": [
-				"${workspaceFolder}/out/**/*.js"
+				"${workspaceFolder}/client/out/**/*.js"
 			],
-			"preLaunchTask": "${defaultBuildTask}"
+			// "preLaunchTask": "${defaultBuildTask}"
 		},
 		{
 			"name": "Extension Tests",

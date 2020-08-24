@@ -10,6 +10,9 @@ import requests
 import pygls.types as types
 import pygls.features as features
 from pygls.server import LanguageServer
+import logging
+
+log = logging.getLogger(__name__)
 
 
 class DRCLanguageServer(LanguageServer):
@@ -20,6 +23,7 @@ class DRCLanguageServer(LanguageServer):
         super().__init__()
         self._drc_server = None
         self._word_count = 0
+        log.error("bear")
 
     async def get_server(self) -> str:
         if self._drc_server is not None:
@@ -62,7 +66,6 @@ def command_hellow_word(ls: DRCLanguageServer, *args):
 @drc_server.feature(features.COMPLETION, trigger_characters=[' '])
 async def completions(ls: DRCLanguageServer, params: types.CompletionParams):
     server = await drc_server.get_server()
-    
     document = ls.workspace.get_document(params.textDocument.uri)
     word = document.word_at_position(params.position)
     model_input: str = ''

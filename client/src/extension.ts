@@ -6,11 +6,13 @@ import * as vscode from 'vscode';
 import * as cp from "child_process";
 
 import { LanguageClient, LanguageClientOptions, ServerOptions } from "vscode-languageclient";
+import { ENGINE_METHOD_PKEY_ASN1_METHS, EIDRM } from "constants";
 
 let client: LanguageClient;
 let PROCESS: cp.ChildProcess;
 
 function getClientOptions(): LanguageClientOptions {
+	vscode.window.activeTextEditor?.document
 	return {
 	 	 // Register the server for plain text documents
 		documentSelector: [
@@ -53,12 +55,28 @@ function startLangServer(
   }
 
 function isStartedInDebugMode(): boolean {
-	return process.env.VSCODE_DEBUG_MODE === "true";
+	return true;
+	// return process.env.VSCODE_DEBUG_MODE === "true";
 }
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	vscode.commands.registerCommand("extension.test", () => {
+		console.log('test vscode');
+		console.log(vscode.window.activeTextEditor?.selection);
+		vscode.window.activeTextEditor?.edit((edit) => {
+			const p = new vscode.Position(0, 0);
+			edit.insert(p, "baer");
+		});
+		let p1 = new vscode.Position(0,0);
+		let p2 = new vscode.Position(0,5);
+		let text = new vscode.Selection(p1, p2);
+	});
+	vscode.window.onDidChangeTextEditorSelection( (event)=> {
+		console.log(event);
+		vscode.window.setStatusBarMessage("hi");
+	});
 	let root = context.extensionPath;
 	if (isStartedInDebugMode()) {
 		client = startLangServerTCP(2087);
@@ -71,6 +89,8 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		client = startLangServer(`${root}/dist/drc-language-server`, [], cwd);
+		
+	// 	//client = startLangServer(pythonPath, ["-m", "server"], cwd);
 	}
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
